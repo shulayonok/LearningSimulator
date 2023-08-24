@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="LearningSimulator.Views.PhrasalVerbsPage">
+    
+    <ContentPage.Background>
+        <!--Возможно стоит закинуть в ресурсник целикового приложения-->
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#000000" Offset="0.1"/>
+            <GradientStop Color="#0a1852" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Resources>
+        <Style x:Key="key" TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal"/>
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="Transparent"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+            <Setter Property="xct:TouchEffect.AnimationDuration"
+                                        Value="70"/>
+            <Setter Property="xct:TouchEffect.PressedScale"
+                                        Value="0.85"/>
+            <Setter Property="xct:TouchEffect.AnimationEasing"
+                                        Value="{x:Static Easing.CubicIn}"/>
+            <Setter Property="xct:TouchEffect.PressedOpacity"
+                                        Value="0.7"/>
+            <Setter Property="Spacing"
+                    Value="2"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <SearchBar x:Name="search" HorizontalOptions="StartAndExpand" TextChanged="SearchBar_TextChanged" Placeholder="Find a phrasal verb" PlaceholderColor="DarkGray"/>
+                <Button Text="+" HorizontalOptions="EndAndExpand" Clicked="AddNewButton_Clicked" BorderColor="Transparent" FontSize="20"/>
+            </StackLayout>
+            <ActivityIndicator x:Name="indicator" IsVisible="false" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <RefreshView x:Name="refresh" Refreshing="RefreshView_Refreshing" RefreshColor="#02315E">
+                <CollectionView x:Name="collectionView" Margin="20" SelectionMode="Single" SelectionChanged="OnSelectionChanged">
+                    <CollectionView.EmptyView>
+                        <StackLayout Padding="15">
+                            <Label Text="No phrasal verb in the dictionary..." FontSize="18" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                            <Image Source="error.png" HeightRequest="120" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Style="{StaticResource key}" xct:ShadowEffect.Opacity="0.3">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Meaning}" TextColor="White" FontSize="Medium"/>
+                                            <Span Text=" - " TextColor="White" FontSize="Medium"/>
+                                            <Span Text="{Binding Translation}" TextColor="White" FontSize="Medium"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="25"/>
+                    </CollectionView.ItemsLayout>
+                </CollectionView>
+            </RefreshView>
+            <FlexLayout Direction="Row" FlexLayout.Basis="100" JustifyContent="SpaceEvenly" Margin="0, 0, 0, 10">
+                <Button Text="Back" FlexLayout.Basis="20%" Clicked="BackButton_Clicked"
+                        xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                <Button Text="Add default words" Clicked="AddDefaultButton_Clicked" FlexLayout.Basis="35%"
+                        xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                <Button Text="Delete all words" Clicked="DeleteAllButton_Clicked" FlexLayout.Basis="35%"
+                        xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+            </FlexLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

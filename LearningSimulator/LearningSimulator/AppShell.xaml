@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LearningSimulator.AppShell"
+             xmlns:views="clr-namespace:LearningSimulator.Views"
+             BackgroundColor="Transparent"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Shell.NavBarIsVisible="False">
+
+    <Shell.Resources>
+        <!-- Style Shell elements -->
+        <Style x:Key="BaseStyle"
+               TargetType="Element">
+            <Setter Property="Shell.TitleColor"
+                    Value="White" />
+            <Setter Property="Shell.TabBarUnselectedColor"
+                    Value="#7d7d7d"/>
+            <Setter Property="Shell.TabBarBackgroundColor"
+                    Value="#030718"/>
+        </Style>
+        <Style TargetType="TabBar"
+               BasedOn="{StaticResource BaseStyle}" />
+        <Style TargetType="Button">
+            <Setter Property="BorderColor"
+                    Value="White"/>
+            <Setter Property="CornerRadius"
+                    Value="50"/>
+            <Setter Property="BorderWidth"
+                    Value="1.2"/>
+            <Setter Property="TextColor"
+                    Value="White"/>
+            <Setter Property="xct:TouchEffect.AnimationDuration"
+                                        Value="70"/>
+            <Setter Property="xct:TouchEffect.PressedScale"
+                                        Value="0.85"/>
+            <Setter Property="xct:TouchEffect.AnimationEasing"
+                                        Value="{x:Static Easing.CubicIn}"/>
+            <Setter Property="xct:TouchEffect.NormalBackgroundColor"
+                                        Value="Transparent"/>
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor"
+                    Value="#ffffff"/>
+            <Setter Property="PlaceholderColor"
+                    Value="DarkGray"/>
+        </Style>
+    </Shell.Resources>
+
+    <ShellItem Route="login">
+        <ShellContent ContentTemplate="{DataTemplate views:LoginPage}"/>
+    </ShellItem>
+
+    <TabBar x:Name="tab">
+        <ShellContent x:Name="home" Route="home"
+            Title="Exercises"
+            Icon="exercises.png"
+            ContentTemplate="{DataTemplate views:HomePage}">
+        </ShellContent>
+
+        <ShellContent x:Name="selection" Route="selection"
+            Title="Dictionary"
+            Icon="words.png"
+            ContentTemplate="{DataTemplate views:SelectionPage}">
+        </ShellContent>
+
+        <ShellContent Route="profile"
+            Title="Profile"
+            Icon="profile.png"
+            ContentTemplate="{DataTemplate views:ProfilePage}">
+        </ShellContent>
+    </TabBar>
+
+</Shell>

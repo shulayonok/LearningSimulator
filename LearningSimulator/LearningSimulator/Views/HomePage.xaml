@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="LearningSimulator.Views.HomePage">
+
+    <ContentPage.Background>
+        <!--Возможно стоит закинуть в ресурсник целикового приложения-->
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#000000" Offset="0.1"/>
+            <GradientStop Color="#0a1852" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" HeightRequest="250" WidthRequest="320">
+                <StackLayout x:Name="wordsTest" Opacity="0" Scale="0.5" Padding="10">
+                    <ImageButton Source="wordsTest.png" HeightRequest="100" Clicked="WTImageButton_Clicked"
+                             xct:TouchEffect.AnimationDuration="70" xct:TouchEffect.NormalBackgroundColor="Transparent" xct:TouchEffect.PressedOpacity="0.7" xct:TouchEffect.PressedScale="0.85"/>
+                    <Label Text="Simple words test" HorizontalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold"/>
+                </StackLayout>
+                <StackLayout x:Name="pvBlitz" Opacity="0" Scale="0.5" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Padding="10">
+                    <ImageButton Source="pvBlitz.png" HeightRequest="100" Clicked="PVBImageButton_Clicked" 
+                             xct:TouchEffect.AnimationDuration="70" xct:TouchEffect.NormalBackgroundColor="Transparent" xct:TouchEffect.PressedOpacity="0.7" xct:TouchEffect.PressedScale="0.85"/>
+                    <Label Text="Phrasal verbs blitz" HorizontalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout x:Name="confirm" Opacity="0" Scale="0.5" IsVisible="false" HorizontalOptions="CenterAndExpand" Spacing="50">
+                <Label Text="Are you sure?" HorizontalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold"/>
+                <StackLayout Orientation="Horizontal" Spacing="75">
+                    <Button Text="Yes" Clicked="Yes_Clicked"  
+                    xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                    <Button Text="No" Clicked="No_Clicked"  
+                    xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" HeightRequest="250" WidthRequest="320">
+                <StackLayout x:Name="wordsBlitz" Opacity="0" Scale="0.5" Padding="10">
+                    <ImageButton Source="wordsBlitz.png" HeightRequest="100" Clicked="WBImageButton_Clicked"
+                             xct:TouchEffect.AnimationDuration="70" xct:TouchEffect.NormalBackgroundColor="Transparent" xct:TouchEffect.PressedOpacity="0.7" xct:TouchEffect.PressedScale="0.85"/>
+                    <Label Text="Words blitz" HorizontalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold"/>
+                </StackLayout>
+                <StackLayout x:Name="pvTest" Opacity="0" Scale="0.5" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" Padding="10">
+                    <ImageButton Source="pvTest.png" HeightRequest="100" Clicked="PVTImageButton_Clicked" 
+                             xct:TouchEffect.AnimationDuration="70" xct:TouchEffect.NormalBackgroundColor="Transparent" xct:TouchEffect.PressedOpacity="0.7" xct:TouchEffect.PressedScale="0.85"/>
+                    <Label Text="Phrasal verbs test" HorizontalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

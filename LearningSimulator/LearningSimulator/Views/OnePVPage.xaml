@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="LearningSimulator.Views.OnePVPage">
+    
+    <ContentPage.Background>
+        <!--Возможно стоит закинуть в ресурсник целикового приложения-->
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#000000" Offset="0.1"/>
+            <GradientStop Color="#0a1852" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Margin="15">
+                <StackLayout Spacing="25">
+                    <ImageButton Source="arrow.png" WidthRequest="30" Clicked="OnBackButton_Clicked" HorizontalOptions="StartAndExpand"
+                             xct:TouchEffect.AnimationDuration="70" xct:TouchEffect.NormalBackgroundColor="Transparent" xct:TouchEffect.PressedOpacity="0.7" xct:TouchEffect.PressedScale="0.85"/>
+                    <StackLayout>
+                        <Label Text="Meaning" FontAttributes="Bold"/>
+                        <Entry Text="{Binding Meaning}" FontSize="Medium"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Translation" FontAttributes="Bold"/>
+                        <Editor Text="{Binding Translation}" FontSize="Medium"/>
+                    </StackLayout>
+                    <lottie:AnimationView x:Name="loginAnim" Animation="add.json" AutoPlay="True" RepeatMode="Infinite" HeightRequest="400"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                    <Button Text="Save" Clicked="OnSaveButton_Clicked" xct:ShadowEffect.Color="AntiqueWhite" 
+                        xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7" HorizontalOptions="CenterAndExpand"/>
+                    <Button Text="Delete" Clicked="OnDeleteButton_Clicked" xct:ShadowEffect.Color="AntiqueWhite" 
+                        xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

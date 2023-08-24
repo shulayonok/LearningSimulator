@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LearningSimulator.Views.ResultPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Shell.TabBarIsVisible="False"
+             x:Name="page"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
+
+    <ContentPage.Background>
+        <!--Возможно стоит закинуть в ресурсник целикового приложения-->
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#000000" Offset="0.1"/>
+            <GradientStop Color="#0a1852" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="result" Text="Result:" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="White"/>
+            <Label x:Name="label" 
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Button x:Name="button" Clicked="Button_Clicked" Text="OK" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

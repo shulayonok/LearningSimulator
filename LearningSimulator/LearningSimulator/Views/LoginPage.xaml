@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="LearningSimulator.Views.LoginPage">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#000000" Offset="0.1"/>
+            <GradientStop Color="#0a1852" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="12">
+                <!--Image Source="login.png" WidthRequest="180" HeightRequest="180" Margin="40"/-->
+                <lottie:AnimationView x:Name="loginAnim" Animation="login.json" AutoPlay="True" RepeatMode="Infinite" HeightRequest="300" WidthRequest="300"/>
+                <Entry x:Name="username" Placeholder="Username: "/>
+                <Entry x:Name="password" Placeholder="Password: " IsPassword="True"/>
+                <Button VerticalOptions="Center" Text="Log-in" Clicked="Login_Clicked" Margin="0,15,0,0" 
+                    xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                <Label HorizontalOptions="Center" xct:TouchEffect.AnimationDuration="70" xct:TouchEffect.PressedScale="0.85">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Don't have an account? " TextColor="DarkGray"/>
+                            <Span Text="Register" TextColor="DarkGray" FontAttributes="Bold" TextDecorations="Underline"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Register_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="regain" HorizontalOptions="Center" Opacity="0" xct:TouchEffect.AnimationDuration="70" xct:TouchEffect.PressedScale="0.85">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Forgot your password? " TextColor="DarkGray"/>
+                            <Span Text="Regain access" TextColor="DarkGray" FontAttributes="Bold" TextDecorations="Underline"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Regain_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:local="clr-namespace:LearningSimulator" 
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="LearningSimulator.Views.ProfilePage"
+             x:Name="thisPage">
+
+    <ContentPage.Background>
+        <!--Возможно стоит закинуть в ресурсник целикового приложения-->
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#000000" Offset="0.1"/>
+            <GradientStop Color="#0a1852" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="entryStyle" TargetType="Entry">
+                <Style.Triggers>
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="true">
+                        <Trigger.EnterActions>
+                            <local:EntryValidation activate="True"/>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <local:EntryValidation activate="False"/>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout x:Name="first" Orientation="Horizontal" Opacity="0" Scale="0.5">
+                    <xct:AvatarView x:Name="avatarView" Text="{Binding Initials}" Margin="10, 0, 0, 0" Size="100" Color="#806491" HorizontalOptions="StartAndExpand"/>
+                    <StackLayout Padding="0, 30, 0, 0" HorizontalOptions="FillAndExpand">
+                        <Label FontSize="Title" HorizontalOptions="CenterAndExpand">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Name}"/>
+                                    <Span Text=" "/>
+                                    <Span Text="{Binding Surname}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="{Binding Username}" HorizontalOptions="CenterAndExpand" FontSize="16"/>
+                    </StackLayout>
+                    <Button x:Name="cancel" Opacity="0" IsEnabled="false" Text="X" Clicked="CancelButton_Clicked" CornerRadius="100" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand"/>
+                </StackLayout>
+                <StackLayout x:Name="second" Orientation="Horizontal" Margin="20" Opacity="0" Scale="0.5">
+                    <Label Text="Name: " FontSize="Medium" FontAttributes="Bold" Margin="0, 10, 0, 0"/>
+                    <Entry StyleId="name" x:Name="name" TextColor="White" Text="{Binding Name}" WidthRequest="250" IsReadOnly="True" HorizontalOptions="EndAndExpand" Style="{StaticResource Key=entryStyle}"/>
+                </StackLayout>
+                <StackLayout x:Name="third" Orientation="Horizontal" Margin="20" Opacity="0" Scale="0.5">
+                    <Label Text="Surname: " FontSize="Medium" FontAttributes="Bold" Margin="0, 10, 0, 0"/>
+                    <Entry StyleId="name" x:Name="surname" TextColor="White" Text="{Binding Surname}" WidthRequest="250" IsReadOnly="True" HorizontalOptions="EndAndExpand" Style="{StaticResource Key=entryStyle}"/>
+                </StackLayout>
+                <StackLayout x:Name="fourth" Orientation="Horizontal" Margin="20" Opacity="0" Scale="0.5">
+                    <Label Text="Username: " FontSize="Medium" FontAttributes="Bold" Margin="0, 10, 0, 0"/>
+                    <Entry StyleId="user" x:Name="username" TextColor="White" Text="{Binding Username}" WidthRequest="250" IsReadOnly="True" HorizontalOptions="EndAndExpand" Style="{StaticResource Key=entryStyle}"/>
+                </StackLayout>
+                <StackLayout x:Name="fifth" Orientation="Horizontal" Margin="20, 20, 20, 0" Opacity="0" Scale="0.5">
+                    <Label Text="Email: " FontSize="Medium" FontAttributes="Bold" Margin="0, 10, 0, 0"/>
+                    <Entry StyleId="email" x:Name="email" TextColor="White" Text="{Binding Email}" WidthRequest="250" IsReadOnly="True" HorizontalOptions="EndAndExpand" Style="{StaticResource Key=entryStyle}"/>
+                </StackLayout>
+                <StackLayout x:Name="sixth" Opacity="0" Scale="0.5">
+                    <lottie:AnimationView x:Name="robotAnim" Animation="robot.json" AutoPlay="True" RepeatMode="Infinite" HeightRequest="200"/>
+                </StackLayout>
+                <StackLayout x:Name="seventh" VerticalOptions="EndAndExpand" Opacity="0" Scale="0.5">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Button x:Name="edit" Text="Edit" Margin="5" Clicked="EditButton_Clicked" 
+                            xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                        <Button Text="Change password" Margin="5" Clicked="ChangePasswordButton_Clicked" 
+                            xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                        <Button x:Name="save" IsEnabled="False" Text="Save" Margin="5" Clicked="SaveButton_Clicked" 
+                            xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="300" Margin="0, 0, 0, 10">
+                        <Button Text="Delete user" Clicked="DeleteButton_Clicked"
+                        xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

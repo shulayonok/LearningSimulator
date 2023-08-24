@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="LearningSimulator.Views.TestPage"
+             Shell.TabBarIsVisible="False">
+
+    <ContentPage.Background>
+        <!--Возможно стоит закинуть в ресурсник целикового приложения-->
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#000000" Offset="0.1"/>
+            <GradientStop Color="#0a1852" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ContentPage.Content>
+        <StackLayout Padding="30">
+            <StackLayout VerticalOptions="StartAndExpand" Orientation="Horizontal">
+                <Button x:Name="cancel" Clicked="cancel_Clicked" Text="X" HorizontalOptions="StartAndExpand" CornerRadius="100" WidthRequest="40" HeightRequest="40"/>
+                <ProgressBar WidthRequest="150" x:Name="progress" IsVisible="False"/>
+                <Label x:Name="number"  HorizontalOptions="EndAndExpand" FontSize="18" FontAttributes="Bold" TextColor="DarkGray"/>
+            </StackLayout>
+            <Label x:Name="label" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="White"/>
+            <StackLayout Margin="30" Spacing="20" VerticalOptions="EndAndExpand">
+                <Button x:Name="one" Clicked="one_Clicked" TextTransform="None" 
+                        xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                <Button x:Name="two" Clicked="two_Clicked" TextTransform="None"
+                        xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                <Button x:Name="three" Clicked="three_Clicked" TextTransform="None"
+                        xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                <Button x:Name="four" Clicked="four_Clicked" TextTransform="None"
+                        xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+                <Button x:Name="five" Clicked="five_Clicked" TextTransform="None"
+                        xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

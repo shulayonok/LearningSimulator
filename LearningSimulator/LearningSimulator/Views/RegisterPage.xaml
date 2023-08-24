@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:LearningSimulator" 
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="LearningSimulator.Views.RegisterPage">
+
+    <ContentPage.Background>
+        <!--Возможно стоит закинуть в ресурсник целикового приложения-->
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#000000" Offset="0.1"/>
+            <GradientStop Color="#0a1852" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="entryStyle" TargetType="Entry">
+                <Style.Triggers>
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="true">
+                        <Trigger.EnterActions>
+                            <local:EntryValidation activate="True"/>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <local:EntryValidation activate="False"/>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="12">
+            <!--Image Source="register.png" WidthRequest="180" HeightRequest="180" Margin="40"/-->
+            <ImageButton Margin="-25" HorizontalOptions="Start" Source="arrow.png" Clicked="BackImageButton_Clicked" WidthRequest="40" VerticalOptions="Start"
+                             xct:TouchEffect.AnimationDuration="70" xct:TouchEffect.AnimationEasing="{x:Static Easing.CubicIn}" xct:TouchEffect.NormalBackgroundColor="Transparent"
+                             xct:TouchEffect.PressedScale="0.85"/>
+            <lottie:AnimationView x:Name="registerAnim" HorizontalOptions="CenterAndExpand" Animation="register.json" AutoPlay="True" 
+                                  RepeatMode="Infinite" HeightRequest="250" WidthRequest="250"/>
+            <Entry StyleId="name" x:Name="name" Placeholder="Name: " Style="{StaticResource Key=entryStyle}"/>
+            <Entry StyleId="name" x:Name="surname" Placeholder="Surname: " Style="{StaticResource Key=entryStyle}"/>
+            <Entry StyleId="user" x:Name="username" Placeholder="Username: " Style="{StaticResource Key=entryStyle}"/>
+            <Entry StyleId="password" x:Name="password" Placeholder="Password: " IsPassword="True" Style="{StaticResource Key=entryStyle}"/>
+            <Entry StyleId="email" x:Name="email" Placeholder="Email: " Style="{StaticResource Key=entryStyle}"/>
+            <Picker x:Name="picker" SelectedIndexChanged="picker_SelectedIndexChanged" Title="Please choose a control question:" TitleColor="DarkGray">
+                <Picker.Items>
+                    <x:String>First pet's name</x:String>
+                    <x:String>Graduation date</x:String>
+                    <x:String>Brand of the first car</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry x:Name="answer" Placeholder="Answer: " TextColor="White" PlaceholderColor="DarkGray" Style="{StaticResource Key=entryStyle}"/>
+            <Button VerticalOptions="Center" Text="Register" Clicked="Register_Clicked" Margin="0,15,0,0" 
+                    xct:ShadowEffect.Color="AntiqueWhite" xct:ShadowEffect.Opacity="0.2" xct:TouchEffect.PressedOpacity="0.7">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
